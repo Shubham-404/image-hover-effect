@@ -1,0 +1,122 @@
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        height: 99vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: linear-gradient(to left, rgb(48, 48, 48), rgb(0, 0, 0));
+    }
+    :root{
+        --anime: cubic-bezier(0.1, 0.7, 0.1, 1);
+    }
+    main{
+        background-image: linear-gradient(to left, rgb(48, 48, 48), rgb(0, 0, 0));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 1px;
+        border-radius: 10px;
+    }
+
+    @property --angle{
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+    main::after, main::before{
+        border-radius: 10px;
+        content: '';
+        position: absolute;
+        /* background-image: conic-gradient(from var(--angle), aqua, orange, red, purple, yellow, green, aqua); */
+        width: 100%;
+        height: 100%;
+        padding: 1px;
+        z-index: -1;
+        animation: 3s spin infinite linear;
+    }
+    main::after{
+        filter: blur(0.25rem);
+    }
+
+    @keyframes spin {
+        to{
+            --angle: 0deg;
+        }
+        from{
+            --angle: 360deg;
+        }
+    }
+
+    #image-container{
+        /* border: 2px solid red; */
+        display: flex;
+        gap: 0.2rem;
+        justify-content: center;
+        perspective: 110rem;
+    }
+    .img{
+        height: 21rem;
+        width: 5rem;
+        background-size: cover;
+        background-position: center;
+        /* border-radius: 10px; */
+        cursor: pointer;
+        transition: 1.25s var(--anime);
+        will-change: filter, transform;
+        position: relative;
+        filter: grayscale(1) brightness(0.5);
+
+    }
+    .img:hover{
+        transform: translateZ(20rem);
+        filter: grayscale(0) saturate(1.3) brightness(1);
+    }
+
+    .img:hover + * {
+        transform: translateZ(14.77rem) rotateY(35deg);
+        filter: grayscale(0.2) brightness(0.9);
+    }
+    .img:hover + * + *{
+        filter: grayscale(0.4) brightness(0.8);
+        transform: translateZ(9.73rem) rotateY(40deg);
+    }
+    .img:hover + * + * + *{
+        filter: grayscale(0.6) brightness(0.7);
+        transform: translateZ(4.17rem) rotateY(35deg);
+    }
+
+
+    .img:has(+ :hover) {
+        filter: grayscale(0.2) brightness(0.9);
+        transform: translateZ(14.77rem) rotateY(-35deg);
+    }
+    .img:has(+ * + :hover) {
+        filter: grayscale(0.4) brightness(0.8);
+        transform: translateZ(9.73rem) rotateY(-40deg);
+    }
+    .img:has(+ * + * + :hover) {
+        filter: grayscale(0.6) brightness(0.7);
+        transform: translateZ(4.17rem) rotateY(-35deg);
+    }
+
+    .img::before, .img::after{
+        content: "";
+        position: absolute;
+        width: 1.25rem;
+        height: 100%;
+        right: -1.25rem;
+    }
+
+    .open{
+        width: 25vw;
+        transform: translateZ(17.375rem);
+        filter: inherit;
+        z-index: 1;
+        margin: 0 0.45vw;
+    }

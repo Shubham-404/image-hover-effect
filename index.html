@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div id="image-container">
+            <div class="img img-1" style="background-image: url(assets/blogger.goog.jpg);" height="400"></div>
+            <div class="img img-2" style="background-image: url(assets/images.wallp.jpg);" height="400"></div>
+            <div class="img img-3" style="background-image: url(assets/makima-controlling.jpg);" height="400"></div>
+            <div class="img img-1" style="background-image: url(assets/allmight.jpg);" height="400"></div>
+            <div class="img img-2" style="background-image: url(assets/missimpo.jpeg);" height="400"></div>
+            <div class="img img-4" style="background-image: url(assets/newimage.jpg);" height="400"></div>
+            <div class="img img-5" style="background-image: url(assets/t4.ftcdc9Uwc.jpg);" height="400"></div>
+            <div class="img img-6" style="background-image: url(assets/tinypngetisb.jpg);" height="400"></div>
+            <div class="img img-9" style="background-image: url(assets/eren\ jeager.jpg);"></div>
+            <div class="img img-7" style="background-image: url(assets/wallpapers-c.jpg);" height="400"></div>
+            <div class="img img-8" style="background-image: url(assets/www.chrometh.jpg);" height="400"></div>
+            <div class="img img-9" style="background-image: url(assets/Your\ Name\ 4k\ Wallpaper\ Galore\ Puter\ Desktop.jpg);" height="400"></div>
+
+        </div>
+    </main>
+    <script>
+
+        document.body.addEventListener("click", (event) => {
+            const element = event.target,
+                imgs = document.querySelectorAll(".img");
+
+            if (!element.classList.contains('img')) {
+                imgs.forEach((img) => img.classList.remove('open'));
+                return;
+            }
+
+            if (element.classList.contains('open')) {
+                element.classList.remove('open');
+                return;
+            }
+
+            imgs.forEach((img) => img.classList.remove('open'));
+            element.classList.add('open');
+        });
+
+    </script>
+</body>
+
+</html>
